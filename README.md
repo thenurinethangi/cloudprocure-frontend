@@ -1,44 +1,69 @@
-# CloudProcure Frontend
 
-Next.js 16.2.11, React 19 and TypeScript application for the CloudProcure academic baseline. The browser communicates only with the API Gateway; it never calls a business service directly.
+---
 
-## Submission identity
+## `cloudprocure-frontend/README.md`
 
-- Student Name: `<STUDENT_NAME>`
-- Student Number: `<STUDENT_NUMBER>`
-- Slack Handle: `<SLACK_HANDLE>`
-- GCP Project ID: `<GCP_PROJECT_ID>`
-- Deployed Application URL: `<CLOUD_RUN_FRONTEND_URL>`
+```markdown
+# ProcureFlow Frontend
 
-## Local development
+Frontend application for the **ProcureFlow Enterprise Procurement System**, developed for the ITS 2130 - Enterprise Cloud Architecture final project.
 
-```powershell
-Copy-Item .env.example .env.local
-npm ci
-npm run dev
-```
+## Student Information
 
-The local/demo profile shows a seeded actor selector so lifecycle actions retain `requestedBy`, `approvedBy`, `uploadedBy` and activity `actor` values without implementing authentication.
+- **Student Name:** Thenuri Nethangi Nanayakkara
+- **Student ID:** 241711017
+- **Module:** ITS 2130 - Enterprise Cloud Architecture
 
-## Verification
+## Google Cloud Project
 
-```powershell
-npm test
-npm run lint
-npm run build
-```
+- **Project Name:** ProcureFlow ECA
+- **Project ID:** `procureflow-eca`
+- **Primary Region:** `us-central1`
 
-## Build-time configuration
+## Live Application
 
-`NEXT_PUBLIC_API_BASE_URL` and `NEXT_PUBLIC_APP_PROFILE` are public build-time values. They must be set before `next build` or supplied as Docker build arguments. Changing a Cloud Run runtime variable does not modify values already compiled into the browser bundle.
+https://procureflow-frontend-7vni4yihhq-uc.a.run.app
 
-For production builds, set `NEXT_PUBLIC_APP_PROFILE=production`. This removes the development actor selector and prevents the API client from attaching development actor headers.
+## Technology
 
-```powershell
-docker build `
-  --build-arg NEXT_PUBLIC_API_BASE_URL=https://gateway.example.com `
-  --build-arg NEXT_PUBLIC_APP_PROFILE=production `
-  -t cloudprocure-frontend .
-```
+- Next.js
+- React
+- TypeScript
+- Docker
+- Google Cloud Run
 
-The multi-stage image copies the standalone server, `.next/static`, and `public`, then runs as the non-root `nextjs` user on port 8080.
+## Application Features
+
+The frontend provides interfaces for:
+
+- Dashboard
+- Purchase Requests
+- Suppliers
+- Supplier Catalog
+- Purchase Orders
+- Activity / Audit Events
+- Purchase Request Attachments
+
+## Deployment
+
+The frontend is containerized and deployed to **Google Cloud Run**.
+
+Application API requests are routed through the deployed backend architecture:
+
+```text
+Browser
+   |
+   v
+Cloud Run Frontend
+   |
+   v
+External Load Balancer
+   |
+   v
+API Gateway
+   |
+   v
+Eureka Service Discovery
+   |
+   v
+Procurement / Supplier / Order Services
