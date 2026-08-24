@@ -1,9 +1,3 @@
-
----
-
-## `cloudprocure-frontend/README.md`
-
-```markdown
 # ProcureFlow Frontend
 
 Frontend application for the **ProcureFlow Enterprise Procurement System**, developed for the ITS 2130 - Enterprise Cloud Architecture final project.
