@@ -44,6 +44,47 @@ The frontend is containerized and deployed to **Google Cloud Run**.
 
 Application API requests are routed through the deployed backend architecture:
 
+## Setup / Getting Started
+
+### Prerequisites
+
+- Node.js 24
+- npm
+
+### Install Dependencies
+
+```bash
+npm ci
+```
+
+### Run Locally
+
+```bash
+npm run dev
+```
+
+The local application is available at:
+
+```text
+http://localhost:3000
+```
+
+### Test and Lint
+
+```bash
+npm test
+npm run lint
+```
+
+### Production Build
+
+```bash
+npm run build
+npm start
+```
+
+The production application is containerized using Docker and deployed to Google Cloud Run through GitHub Actions.
+
 ```text
 Browser
    |
